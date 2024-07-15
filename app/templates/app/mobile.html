@@ -1,0 +1,52 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Buy Now{% endblock title %}
+{% block main-content %}
+<style>
+.card-img-top {
+    width: 100%;
+    height: 200px; /* Vous pouvez ajuster cette hauteur selon vos besoins */
+    object-fit: cover; /* Cette propriété s'assure que l'image couvre toute la zone de l'élément tout en conservant son rapport d'aspect */
+    object-position: center; /* Centre l'image dans l'élément */
+}
+</style>
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <a href="{% url 'mobile' %}" class="list-group-item list-group-item-action active">All Mobile</a>
+                <a href="{% url 'mobiledata' 'ITEL' %}" class="list-group-item list-group-item-action">ITEL</a>
+                <a href="{% url 'mobiledata' 'HUAWEI' %}" class="list-group-item list-group-item-action">HUAWEI</a>
+                <a href="{% url 'mobiledata' 'below' %}" class="list-group-item list-group-item-action">BELOW 10000</a>
+                <a href="{% url 'mobiledata' 'above' %}" class="list-group-item list-group-item-action">ABOVE 10000</a>
+                <!-- Ajoutez d'autres marques si nécessaire -->
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                {% for product in mobiles %}
+                
+                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                </div><div class="row"> <!-- Ferme la ligne précédente et commence une nouvelle ligne tous les trois produits -->
+                {% endif %}
+                <div class="col-sm-4 mb-4">
+                    <a href="{% url 'product-detail' product.id %}" class="btn">
+                    <div class="card">
+                        <img src="{{ product.product_image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ product.title }}</h5>
+                            <p class="card-text">
+                                <strong>{{ product.discount_price }}</strong>
+                                <br>
+                                <small class="text-muted text-decoration-line-through">{{ product.selling_price }}</small>
+                            </p>
+                           </a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
