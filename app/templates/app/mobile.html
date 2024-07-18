@@ -30,20 +30,21 @@
                 </div><div class="row"> <!-- Ferme la ligne précédente et commence une nouvelle ligne tous les trois produits -->
                 {% endif %}
                 <div class="col-sm-4 mb-4">
-                    <a href="{% url 'product-detail' product.id %}" class="btn">
                     <div class="card">
-                        <img src="{{ product.product_image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ product.title }}</h5>
-                            <p class="card-text">
-                                <strong>{{ product.discount_price }}</strong>
-                                <br>
-                                <small class="text-muted text-decoration-line-through">{{ product.selling_price }}</small>
-                            </p>
-                           </a>
-                        </div>
+                        <a href="{% url 'product-detail' product.id %}" class="btn">
+                            <img src="{{ product.product_image.url }}" class="card-img-top img-fluid" alt="{{ product.title }}">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ product.title }}</h5>
+                                <p class="card-text">
+                                    <strong>{{ product.discount_price }}</strong>
+                                    <br>
+                                    <small class="text-muted text-decoration-line-through">{{ product.selling_price }}</small>
+                                </p>
+                            </div>
+                        </a>
                     </div>
                 </div>
+                
                 {% endfor %}
             </div>
         </div>
