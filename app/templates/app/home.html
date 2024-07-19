@@ -40,7 +40,7 @@
 {% block main-content %}
 <!-- 1st Product Slider -->
 <div class="container text-center my-4">
-  <h2>ShoppingX Deals of The Day</h2>
+  <button type="submit" class="btn btn-primary shadow px-5 py-2">Globalshop Deals of The Day</button>
   <div class="owl-carousel" id="slider1">
     {% for t in topcomputer %}
     <a href="{% url 'product-detail' t.id %}" class="btn">
@@ -92,7 +92,7 @@
 
 <!-- 2nd Product Slider -->
 <div class="container text-center my-4">
-  <h2>Trending Deals</h2>
+  <button type="submit" class="btn btn-primary shadow px-5 py-2">Globalshop trading Deals of The Day</button>
   <div class="owl-carousel" id="slider2">
     {% for m in topmobile %}
     <a href="{% url 'product-detail' m.id %}" class="btn">
@@ -109,7 +109,8 @@
 
 <!-- 3rd Product Slider -->
 <div class="container text-center my-4">
-  <h2>Trending Accessories</h2>
+  <button type="submit" class="btn btn-primary shadow px-5 py-2">Globalshop Trending Accessories</button>
+
   <div class="owl-carousel" id="slider3">
     {% for ac in topaccesoire %}
     <a href="{% url 'product-detail' ac.id %}" class="btn">
